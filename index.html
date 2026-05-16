@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lagos Tacos Ebenezer | Authentic Mexican Flavor</title>
+    <meta name="description" content="Experience the authentic taste of Mexico at Lagos Tacos Ebenezer. Fresh ingredients, traditional recipes, and unforgettable flavors in New Orleans.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,500;0,700;1,600&family=Poppins:wght=300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#C62828',
+                            orange: '#F57C00',
+                            black: '#121212',
+                            dark: '#1E1E1E',
+                            gold: '#D4AF37'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'slow-zoom': 'slowZoom 20s infinite alternate',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slowZoom: {
+                            '0%': { transform: 'scale(1)' },
+                            '100%': { transform: 'scale(1.1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #F57C00, #C62828);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-gradient-brand {
+            background: linear-gradient(135deg, #C62828 0%, #F57C00 100%);
+        }
+
+        #navbar {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        #navbar.scrolled {
+            background-color: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(12px);
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #C62828;
+            border-radius: 10px;
+        }
+
+        .img-card {
+            overflow: hidden;
+        }
+        .img-card img {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .img-card:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- Fixed Full-Screen Background -->
+    <div class="fixed inset-0 z-0 overflow-hidden">
+        <img src="https://wlwzooglxpubstgfxvoo.supabase.co/storage/v1/object/sign/web/nuevobirria-ezgif.com-video-to-gif-converter.gif?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hM2VjMmQ4NC1jZTVmLTRiMzItYmRhYy1mODBhZTkwNWI3MzYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ3ZWIvbnVldm9iaXJyaWEtZXpnaWYuY29tLXZpZGVvLXRvLWdpZi1jb252ZXJ0ZXIuZ2lmIiwiaWF0IjoxNzc3Njg1MjQwLCJleHAiOjE4MDkyMjEyNDB9.GYSbAasyeN3fygfqYh9l9Iudky3z_VhlyKC2-pwRARM" 
+             alt="Background" 
+             class="w-full h-full object-cover animate-slow-zoom" />
+        <div class="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-black/95"></div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header id="navbar" class="fixed w-full top-0 z-50 py-6">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <!-- Brand Logo (Sized Elegantly) -->
+            <a href="#home" class="flex items-center group">
+                <img src="https://res.cloudinary.com/dd3tduggc/image/upload/v1778899653/logo_mt84iq.png" alt="Lagos Tacos Logo" class="h-24 md:h-32 w-auto transition-all group-hover:scale-105">
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden lg:flex gap-8 items-center font-medium">
+                <a href="#home" data-i18n="nav-home" class="text-white hover:text-brand-orange transition-colors uppercase tracking-widest text-xs">Inicio</a>
+                <a href="#menu" data-i18n="nav-menu" class="text-white hover:text-brand-orange transition-colors uppercase tracking-widest text-xs">Menú</a>
+                <a href="#gallery" data-i18n="nav-gallery" class="text-white hover:text-brand-orange transition-colors uppercase tracking-widest text-xs">Galería</a>
+                <a href="#location" data-i18n="nav-location" class="text-white hover:text-brand-orange transition-colors uppercase tracking-widest text-xs">Ubicación</a>
+                
+                <!-- Language Switcher Desktop -->
+                <div class="flex items-center bg-white/10 backdrop-blur-md p-1 rounded-full border border-white/10 ml-2">
+                    <button onclick="changeLanguage('en')" id="lang-btn-en" class="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider transition-all uppercase text-gray-400 hover:text-white">EN</button>
+                    <button onclick="changeLanguage('es')" id="lang-btn-es" class="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider transition-all uppercase bg-gradient-brand text-white shadow-md">ES</button>
+                </div>
+
+                <a href="#location" data-i18n="btn-order" class="bg-gradient-brand text-white px-6 py-3 rounded-full font-bold uppercase tracking-wider text-xs hover:shadow-[0_0_20px_rgba(245,124,0,0.4)] transition-all transform hover:scale-105">
+                    Ordenar Ahora
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Trigger & Mobile Lang Pill -->
+            <div class="flex items-center gap-4 lg:hidden">
+                <!-- Compact Mobile Language Switcher -->
+                <button onclick="toggleMobileLang()" class="flex items-center gap-1 bg-white/10 px-3 py-1.5 rounded-full border border-white/10 text-xs font-bold text-white transition-all hover:bg-white/20">
+                    <i class="ph ph-globe text-sm"></i>
+                    <span id="mobile-current-lang-label">ES</span>
+                </button>
+                <button id="mobile-menu-btn" class="text-white p-2">
+                    <i class="ph ph-list text-3xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-xl border-b border-white/10 shadow-2xl transition-all">
+            <div class="flex flex-col px-8 py-10 space-y-6 text-center">
+                <a href="#home" data-i18n="nav-home" class="mobile-link text-xl text-white font-serif tracking-widest">INICIO</a>
+                <a href="#menu" data-i18n="nav-menu" class="mobile-link text-xl text-white font-serif tracking-widest">MENÚ</a>
+                <a href="#gallery" data-i18n="nav-gallery" class="mobile-link text-xl text-white font-serif tracking-widest">GALERÍA</a>
+                <a href="#location" data-i18n="nav-location" class="mobile-link text-xl text-white font-serif tracking-widest">UBICACIÓN</a>
+                <a href="#location" data-i18n="btn-order" class="bg-gradient-brand text-white py-4 rounded-xl font-bold uppercase tracking-widest text-sm shadow-lg">Ordenar Ahora</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20">
+        <div class="text-center px-6 max-w-5xl z-10">
+            <h1 data-i18n="hero-title" class="font-serif text-6xl md:text-8xl font-bold text-white mb-8 leading-tight drop-shadow-2xl animate-fade-in-up">
+                Tradición en <br/> <span class="text-gradient">Cada Bocado</span>
+            </h1>
+            <p data-i18n="hero-subtitle" class="text-lg md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto font-light leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s">
+                Ingredientes frescos, recetas de familia y los sabores más audaces de México traídos directamente a tu vecindario.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in-up" style="animation-delay: 0.4s">
+                <a href="#menu" data-i18n="btn-view-menu" class="w-full sm:w-auto bg-white text-black px-10 py-5 rounded-full font-bold text-lg hover:bg-brand-orange hover:text-white transition-all transform hover:-translate-y-1">
+                    Ver Menú
+                </a>
+                <a href="#location" data-i18n="btn-find-us" class="w-full sm:w-auto bg-transparent border-2 border-white/20 text-white px-10 py-5 rounded-full font-bold text-lg hover:border-brand-orange hover:text-brand-orange transition-all">
+                    Encuéntranos
+                </a>
+            </div>
+        </div>
+        
+        <a href="#menu" class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 animate-bounce transition-colors hover:text-brand-orange">
+            <i class="ph ph-arrow-down text-3xl"></i>
+        </a>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="relative z-10 py-32 bg-brand-dark/95 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 reveal">
+                <span data-i18n="menu-tag" class="text-brand-gold font-medium tracking-widest uppercase text-sm mb-3 block">Menú de Sabores</span>
+                <h2 data-i18n="menu-title" class="font-serif text-5xl md:text-6xl font-bold text-white mb-6">Selección de la Casa</h2>
+                <div class="h-1 w-20 bg-gradient-brand mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Tacos Section -->
+                <div class="reveal" style="transition-delay: 0.1s">
+                    <h3 data-i18n="menu-cat-tacos" class="font-serif text-3xl text-brand-orange mb-8 flex items-center gap-3">
+                        <i class="ph ph-fire"></i> Tacos de la Casa
+                    </h3>
+                    <div class="space-y-8">
+                        <div class="group cursor-default">
+                            <div class="flex justify-between items-baseline mb-2">
+                                <h4 class="text-xl font-bold text-white group-hover:text-brand-orange transition-colors">Birria Tacos</h4>
+                            </div>
+                            <p data-i18n="desc-birria" class="text-gray-400 text-sm italic">Carne de res cocida a fuego lento, queso fundido, cilantro, cebolla y consomé para remojar.</p>
+                        </div>
+                        <div class="group cursor-default">
+                            <div class="flex justify-between items-baseline mb-2">
+                                <h4 class="text-xl font-bold text-white group-hover:text-brand-orange transition-colors">Al Pastor</h4>
+                            </div>
+                            <p data-i18n="desc-alpastor" class="text-gray-400 text-sm italic">Puerco marinado con piña, cilantro, cebolla y nuestra salsa secreta.</p>
+                        </div>
+                        <div class="group cursor-default">
+                            <div class="flex justify-between items-baseline mb-2">
+                                <h4 class="text-xl font-bold text-white group-hover:text-brand-orange transition-colors">Carne Asada</h4>
+                            </div>
+                            <p data-i18n="desc-carneasada" class="text-gray-400 text-sm italic">Filete premium a la parrilla, guacamole y tortillas hechas a mano.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specialties Section -->
+                <div class="reveal" style="transition-delay: 0.2s">
+                    <h3 data-i18n="menu-cat-specialties" class="font-serif text-3xl text-brand-orange mb-8 flex items-center gap-3">
+                        <i class="ph ph-cooking-pot"></i> Especialidades
+                    </h3>
+                    <div class="space-y-8">
+                        <div class="group cursor-default">
+                            <div class="flex justify-between items-baseline mb-2">
+                                <h4 class="text-xl font-bold text-white group-hover:text-brand-orange transition-colors">Quesabirria Plate</h4>
+                            </div>
+                            <p data-i18n="desc-quesabirria" class="text-gray-400 text-sm italic">Tres tacos de birria con queso servidos con arroz, frijoles y un consomé grande.</p>
+                        </div>
+                        <div class="group cursor-default">
+                            <div class="flex justify-between items-baseline mb-2">
+                                <h4 class="text-xl font-bold text-white group-hover:text-brand-orange transition-colors">Lagos Burrito</h4>
+                            </div>
+                            <p data-i18n="desc-burrito" class="text-gray-400 text-sm italic">Elección de carne, frijoles, arroz, queso y nuestra salsa signature estilo "Cane's".</p>
+                        </div>
+                        <div class="group cursor-default">
+                            <div class="flex justify-between items-baseline mb-2">
+                                <h4 class="text-xl font-bold text-white group-hover:text-brand-orange transition-colors">Street Corn (Esquites)</h4>
+                            </div>
+                            <p data-i18n="desc-esquites" class="text-gray-400 text-sm italic">Maíz desgranado, mayonesa, queso cotija, limón y chile en polvo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alcoholic Drinks -->
+                <div class="reveal" style="transition-delay: 0.3s">
+                    <h3 data-i18n="menu-cat-drinks" class="font-serif text-3xl text-brand-orange mb-8 flex items-center gap-3">
+                        <i class="ph ph-beer-stein"></i> Bebidas Alcohólicas
+                    </h3>
+                    <div class="space-y-8">
+                        <div class="group cursor-default">
+                            <div class="flex justify-between items-baseline mb-2">
+                                <h4 class="text-xl font-bold text-white group-hover:text-brand-orange transition-colors">Margarita Signature</h4>
+                            </div>
+                            <p data-i18n="desc-margarita" class="text-gray-400 text-sm italic">Tequila reposado premium, triple sec, jugo de limón fresco y néctar de agave servido con borde de sal.</p>
+                        </div>
+                        <div class="group cursor-default">
+                            <div class="flex justify-between items-baseline mb-2">
+                                <h4 class="text-xl font-bold text-white group-hover:text-brand-orange transition-colors">Michelada Tradicional</h4>
+                            </div>
+                            <p data-i18n="desc-michelada" class="text-gray-400 text-sm italic">Cerveza mexicana helada servida con nuestra sabrosa mezcla de michelada de la casa, jugo de limón y borde con sal de chile.</p>
+                        </div>
+                        <div class="group cursor-default">
+                            <div class="flex justify-between items-baseline mb-2">
+                                <h4 class="text-xl font-bold text-white group-hover:text-brand-orange transition-colors">Cervezas Importadas</h4>
+                            </div>
+                            <p data-i18n="desc-beers" class="text-gray-400 text-sm italic">Una auténtica selección de cervezas mexicanas heladas que incluye Corona, Modelo Especial y Pacífico.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Feast Section -->
+    <section id="gallery" class="relative z-10 py-32 bg-black">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span data-i18n="gallery-tag" class="text-brand-gold font-medium tracking-widest uppercase text-sm mb-3 block">Banquete Visual</span>
+                <h2 data-i18n="gallery-title" class="font-serif text-5xl md:text-6xl font-bold text-white">Galería de Fotos</h2>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal">
+                <div class="img-card rounded-2xl aspect-square bg-brand-dark overflow-hidden group relative">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=800" 
+                         alt="Birria Tacos" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-brand-red/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="ph ph-magnifying-glass-plus text-white text-3xl"></i>
+                    </div>
+                </div>
+                <div class="img-card rounded-2xl aspect-square md:row-span-2 bg-brand-dark overflow-hidden group relative">
+                    <img src="https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?auto=format&fit=crop&q=80&w=800" 
+                         alt="Street Corn" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-brand-red/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="ph ph-magnifying-glass-plus text-white text-3xl"></i>
+                    </div>
+                </div>
+                <div class="img-card rounded-2xl aspect-square md:row-span-2 bg-brand-dark overflow-hidden group relative">
+                    <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&q=80&w=800" 
+                         alt="Tacos Platter" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-brand-red/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="ph ph-magnifying-glass-plus text-white text-3xl"></i>
+                    </div>
+                </div>
+                <div class="img-card rounded-2xl aspect-square bg-brand-dark overflow-hidden group relative">
+                    <img src="https://images.unsplash.com/photo-1582234372722-50d7ccc30ebd?auto=format&fit=crop&q=80&w=800" 
+                         alt="Salsa" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-brand-red/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="ph ph-magnifying-glass-plus text-white text-3xl"></i>
+                    </div>
+                </div>
+                <div class="img-card rounded-2xl aspect-square bg-brand-dark overflow-hidden group relative">
+                    <img src="https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?auto=format&fit=crop&q=80&w=800" 
+                         alt="Taco Close up" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-brand-red/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="ph ph-magnifying-glass-plus text-white text-3xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="relative z-10 py-32 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <span data-i18n="location-tag" class="text-brand-gold font-medium tracking-widest uppercase text-sm mb-3 block">Visítanos</span>
+                    <h2 data-i18n="location-title" class="font-serif text-5xl md:text-6xl font-bold text-white mb-10">Dónde Estamos</h2>
+                    
+                    <div class="space-y-8 mb-12">
+                        <div class="flex items-start gap-6 group">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-dark border border-white/10 flex items-center justify-center group-hover:bg-brand-red transition-all">
+                                <i class="ph-fill ph-map-pin text-2xl text-brand-orange group-hover:text-white"></i>
+                            </div>
+                            <div>
+                                <h4 data-i18n="loc-spot-title" class="text-white font-bold text-xl mb-1">Nuestro Lugar</h4>
+                                <p class="text-gray-400 leading-relaxed">2633 St Claude Ave<br>New Orleans, LA 70117</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-6 group">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-dark border border-white/10 flex items-center justify-center group-hover:bg-brand-red transition-all">
+                                <i class="ph-fill ph-clock text-2xl text-brand-orange group-hover:text-white"></i>
+                            </div>
+                            <div>
+                                <h4 data-i18n="loc-hours-title" class="text-white font-bold text-xl mb-1">Horario Comercial</h4>
+                                <p data-i18n="loc-hours-desc" class="text-gray-400">Lun - Sáb: 11:00 AM - 10:00 PM<br>Domingo: Cerrado</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-6 group">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-dark border border-white/10 flex items-center justify-center group-hover:bg-brand-red transition-all">
+                                <i class="ph-fill ph-phone text-2xl text-brand-orange group-hover:text-white"></i>
+                            </div>
+                            <div>
+                                <h4 data-i18n="loc-contact-title" class="text-white font-bold text-xl mb-1">Contacto</h4>
+                                <p class="text-gray-400">(504) 555-0123</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=2633+St+Claude+Ave+New+Orleans+LA+70117" target="_blank" data-i18n="btn-directions" class="inline-flex items-center gap-3 bg-white text-black px-10 py-5 rounded-full font-bold hover:bg-brand-orange hover:text-white transition-all shadow-xl">
+                        <i class="ph ph-navigation-arrow-bold"></i> Cómo Llegar
+                    </a>
+                </div>
+
+                <!-- Google Maps Embed optimized for 2633 St Claude Ave -->
+                <div class="h-[500px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl reveal" style="transition-delay: 0.2s">
+                    <iframe 
+                        src="https://www.google.com/maps?q=2633+St+Claude+Ave+New+Orleans,+LA+70117&output=embed" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0; filter: invert(90%) hue-rotate(180deg) brightness(1.1) contrast(1.1);" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative z-10 bg-brand-dark pt-24 pb-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-12 mb-20">
+                <div class="text-center md:text-left">
+                    <!-- Footer Logo -->
+                    <img src="https://res.cloudinary.com/dd3tduggc/image/upload/v1778899653/logo_mt84iq.png" alt="Logo" class="h-32 md:h-40 mx-auto md:mx-0 mb-6">
+                    <p data-i18n="footer-desc" class="text-gray-500 max-w-xs leading-relaxed">Sirviendo la comida mexicana más auténtica y deliciosa con pasión por la autenticidad en el corazón de New Orleans.</p>
+                </div>
+
+                <div class="flex gap-4">
+                    <a href="#" class="w-14 h-14 rounded-full bg-black flex items-center justify-center text-gray-400 hover:bg-brand-orange hover:text-white transition-all transform hover:-translate-y-2 border border-white/5">
+                        <i class="ph-fill ph-facebook-logo text-2xl"></i>
+                    </a>
+                    <a href="#" class="w-14 h-14 rounded-full bg-black flex items-center justify-center text-gray-400 hover:bg-gradient-to-tr hover:from-orange-500 hover:to-purple-600 hover:text-white transition-all transform hover:-translate-y-2 border border-white/5">
+                        <i class="ph-fill ph-instagram-logo text-2xl"></i>
+                    </a>
+                    <a href="#" class="w-14 h-14 rounded-full bg-black flex items-center justify-center text-gray-400 hover:bg-red-600 hover:text-white transition-all transform hover:-translate-y-2 border border-white/5">
+                        <i class="ph-fill ph-tiktok-logo text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center border-t border-white/5 pt-10">
+                <p class="text-gray-500 text-sm mb-2">&copy; <span id="year"></span> Lagos Tacos Ebenezer. <span data-i18n="footer-rights">Todos los derechos reservados.</span></p>
+                <p class="text-gray-600 text-xs tracking-widest uppercase">Enoch Design Tech 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts & Multilingual Engine -->
+    <script>
+        // Set Current Year dynamically
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 1. Language Translation Dictionary
+        const translations = {
+            es: {
+                "nav-home": "Inicio",
+                "nav-menu": "Menú",
+                "nav-gallery": "Galería",
+                "nav-location": "Ubicación",
+                "btn-order": "Ordenar Ahora",
+                "hero-title": "Tradición en <br/> <span class='text-gradient'>Cada Bocado</span>",
+                "hero-subtitle": "Ingredientes frescos, recetas de familia y los sabores más audaces de México traídos directamente a tu vecindario.",
+                "btn-view-menu": "Ver Menú",
+                "btn-find-us": "Encuéntranos",
+                "menu-tag": "Menú de Sabores",
+                "menu-title": "Selección de la Casa",
+                "menu-cat-tacos": "Tacos de la Casa",
+                "desc-birria": "Carne de res cocida a fuego lento, queso fundido, cilantro, cebolla y consomé para remojar.",
+                "desc-alpastor": "Puerco marinado con piña, cilantro, cebolla y nuestra salsa secreta.",
+                "desc-carneasada": "Filete premium a la parrilla, guacamole y tortillas hechas a mano.",
+                "menu-cat-specialties": "Especialidades",
+                "desc-quesabirria": "Tres tacos de birria con queso servidos con arroz, frijoles y un consomé grande.",
+                "desc-burrito": "Elección de carne, frijoles, arroz, queso y nuestra salsa signature estilo \"Cane's\".",
+                "desc-esquites": "Maíz desgranado, mayonesa, queso cotija, limón y chile en polvo.",
+                "menu-cat-drinks": "Bebidas Alcohólicas",
+                "desc-margarita": "Tequila reposado premium, triple sec, jugo de limón fresco y néctar de agave servido con borde de sal.",
+                "desc-michelada": "Cerveza mexicana helada servida con nuestra sabrosa mezcla de michelada de la casa, jugo de limón y borde con sal de chile.",
+                "desc-beers": "Una auténtica selección de cervezas mexicanas heladas que incluye Corona, Modelo Especial y Pacífico.",
+                "gallery-tag": "Banquete Visual",
+                "gallery-title": "Galería de Fotos",
+                "location-tag": "Visítanos",
+                "location-title": "Dónde Estamos",
+                "loc-spot-title": "Nuestro Lugar",
+                "loc-hours-title": "Horario Comercial",
+                "loc-hours-desc": "Lun - Sáb: 11:00 AM - 10:00 PM<br>Domingo: Cerrado",
+                "loc-contact-title": "Contacto",
+                "btn-directions": "Cómo Llegar",
+                "footer-desc": "Sirviendo la comida mexicana más auténtica y deliciosa con pasión por la autenticidad en el corazón de New Orleans.",
+                "footer-rights": "Todos los derechos reservados."
+            },
+            en: {
+                "nav-home": "Home",
+                "nav-menu": "Menu",
+                "nav-gallery": "Gallery",
+                "nav-location": "Location",
+                "btn-order": "Order Now",
+                "hero-title": "Tradition in <br/> <span class='text-gradient'>Every Bite</span>",
+                "hero-subtitle": "Fresh ingredients, family recipes, and the boldest flavors of Mexico brought directly to your neighborhood.",
+                "btn-view-menu": "View Menu",
+                "btn-find-us": "Find Us",
+                "menu-tag": "Flavor Menu",
+                "menu-title": "Signature Selection",
+                "menu-cat-tacos": "Signature Tacos",
+                "desc-birria": "Slow-cooked beef, melted cheese, cilantro, onions, and consomé for dipping.",
+                "desc-alpastor": "Marinated pork with pineapple, cilantro, onions, and our secret salsa.",
+                "desc-carneasada": "Premium grilled steak, guacamole, and hand-pressed tortillas.",
+                "menu-cat-specialties": "Specialties",
+                "desc-quesabirria": "Three cheesy birria tacos served with rice, beans, and a large consomé.",
+                "desc-burrito": "Choice of meat, beans, rice, cheese, and our signature \"Cane's-style\" sauce.",
+                "desc-esquites": "Corn off the cob, mayo, cotija cheese, lime, and chili powder.",
+                "menu-cat-drinks": "Alcoholic Beverages",
+                "desc-margarita": "Premium Tequila reposado, triple sec, fresh lime juice, and agave nectar served with a salted rim.",
+                "desc-michelada": "Ice-cold Mexican beer served with our savory house michelada mix, lime juice, and a chili-salted rim.",
+                "desc-beers": "An authentic selection of ice-cold Mexican beers including Corona, Modelo Especial, and Pacifico.",
+                "gallery-tag": "Visual Feast",
+                "gallery-title": "Our Food Gallery",
+                "location-tag": "Visit Us",
+                "location-title": "Where We Are",
+                "loc-spot-title": "Our Spot",
+                "loc-hours-title": "Business Hours",
+                "loc-hours-desc": "Mon - Sat: 11:00 AM - 10:00 PM<br>Sunday: Closed",
+                "loc-contact-title": "Contact",
+                "btn-directions": "Get Directions",
+                "footer-desc": "Serving the most authentic and delicious Mexican food with passion for authenticity in the heart of New Orleans.",
+                "footer-rights": "All rights reserved."
+            }
+        };
+
+        let currentLang = localStorage.getItem('selectedLang') || 'es';
+
+        // 2. Change Language Function
+        function changeLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('selectedLang', lang);
+            
+            // Translate all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Update HTML Lang Attribute
+            document.documentElement.lang = lang;
+
+            // Update Desktop buttons style
+            const btnEn = document.getElementById('lang-btn-en');
+            const btnEs = document.getElementById('lang-btn-es');
+            
+            if (lang === 'en') {
+                btnEn.className = "px-3 py-1 rounded-full text-[10px] font-bold tracking-wider transition-all uppercase bg-gradient-brand text-white shadow-md";
+                btnEs.className = "px-3 py-1 rounded-full text-[10px] font-bold tracking-wider transition-all uppercase text-gray-400 hover:text-white";
+                document.getElementById('mobile-current-lang-label').textContent = 'EN';
+            } else {
+                btnEs.className = "px-3 py-1 rounded-full text-[10px] font-bold tracking-wider transition-all uppercase bg-gradient-brand text-white shadow-md";
+                btnEn.className = "px-3 py-1 rounded-full text-[10px] font-bold tracking-wider transition-all uppercase text-gray-400 hover:text-white";
+                document.getElementById('mobile-current-lang-label').textContent = 'ES';
+            }
+        }
+
+        // Toggle language in mobile view
+        function toggleMobileLang() {
+            if (currentLang === 'es') {
+                changeLanguage('en');
+            } else {
+                changeLanguage('es');
+            }
+        }
+
+        // Initialize default translation
+        document.addEventListener('DOMContentLoaded', () => {
+            changeLanguage(currentLang);
+        });
+
+        // Header Scrolling Background Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Interaction
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Scroll Animation Trigger (Intersection Observer)
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, {
+            threshold: 0.12
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Smooth Scroll implementation for Anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const offset = 80;
+                    const bodyRect = document.body.getBoundingClientRect().top;
+                    const elementRect = targetElement.getBoundingClientRect().top;
+                    const elementPosition = elementRect - bodyRect;
+                    const offsetPosition = elementPosition - offset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
